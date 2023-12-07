@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.accordion > .accordion--active > div {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+}

@@ -6,7 +6,7 @@ export type Label = "Bug" | "Feature" | "Performance" | "Security" | "Documentat
 export type Status = "Triage" | "Backlog" | "Todo" | "In Progress" | "In Review" | "Done";
 export type Team = "HFE" | "HBE" | "HP";
 
-type Issue = {
+export type Issue = {
   // rendered
   assignee?: string | null;
   priority: Priority;
@@ -28,10 +28,13 @@ type IssuesError = {
   message: string;
 };
 
+export type ParamType = "pageNumber" | "groupBy";
+
 type IssuesContext = {
   loading: boolean;
   params: {
     pageNumber: number;
+    groupBy?: "priority" | "status" | "assignee";
   };
   data?: IssuesResponse;
   error?: IssuesError;
@@ -48,7 +51,7 @@ export const DEFAULT_ISSUES_DATA: IssuesContextWithUtils = {
 
 export type IssuesContextWithUtils = IssuesContext & {
   fetcher: () => void;
-  setParam: (key: string, value: any) => void;
+  setParam: (key: ParamType, value: any) => void;
 };
 
 const IssuesContext = createContext(DEFAULT_ISSUES_DATA);

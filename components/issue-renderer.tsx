@@ -1,4 +1,4 @@
-import IssuesContext, { Priority, Status } from "@/contexts/issues";
+import IssuesContext, { Issue, Priority, Status } from "@/contexts/issues";
 import { getInitials } from "@/utils/issue";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Virtuoso } from "react-virtuoso";
@@ -25,22 +25,18 @@ const PriorityRenderer = ({ priority }: { priority: Priority }) => {
   );
 };
 
-const IssueRenderer = () => {
-  const { data } = useContext(IssuesContext);
+export const IssueRenderer = ({ data }: { data: Issue[] }) => {
   const [height, setHeight] = useState(0);
   const parentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     parentRef.current && setHeight(parentRef.current.getBoundingClientRect().height);
   }, []);
 
-  // loading
-  if (!data?.tickets) return null;
-
   return (
     <div className="flex flex-auto w-full" ref={parentRef}>
       {
         height > 0 ? (
-          <Virtuoso data={data?.tickets} style={{ height, width: '100%' }} itemContent={(_, data) => (
+          <Virtuoso data={data} style={{ height, width: '100%' }} itemContent={(_, data) => (
             <div key={data.id} className="flex justify-between gap-x-6 py-5 bg-zinc">
               <div className="min-w-0 flex-auto flex gap-x-6">
                 <p className="text-sm font-semibold leading-6 text-gray-900">{data.id}</p>
@@ -58,4 +54,13 @@ const IssueRenderer = () => {
     </div>);
 };
 
-export default IssueRenderer;
+const IssuesList = () => {
+  const { data } = useContext(IssuesContext);
+
+  // loading
+  if (!data?.tickets) return null;
+
+  return <IssueRenderer data={data.tickets} />
+};
+
+export default IssuesList;
