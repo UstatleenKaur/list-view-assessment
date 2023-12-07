@@ -2,9 +2,9 @@ import { Inter } from 'next/font/google'
 import { useContext } from 'react'
 import IssueContextWrapper from '@/contexts/issuesWrapper'
 import IssuesContext from '@/contexts/issues'
-import IssueGroups from '@/components/issue-groups'
-import IssuesList from '@/components/issue-renderer'
-import IssueGroupByTags from '@/components/issue-group-by-tags'
+import IssueGroups from '@/components/organisms/issue-groups'
+import IssuesList from '@/components/organisms/issue-renderer'
+import IssueGroupByTags from '@/components/organisms/issue-group-by-tags'
 
 const inter = Inter({ subsets: ['latin'] })
 
