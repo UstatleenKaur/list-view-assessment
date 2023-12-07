@@ -1,29 +1,9 @@
-import IssuesContext, { Issue, Priority, Status } from "@/contexts/issues";
+import IssuesContext, { Issue } from "@/contexts/issues";
 import { getInitials } from "@/utils/issue";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Virtuoso } from "react-virtuoso";
-
-const StatusRenderer = ({ status }: { status: Status }) => {
-  const colorType = (status === "Backlog" || status === "Todo") ? "gray" : status === "In Progress" ? "yellow" : status === "In Review" ? "pink" : status === "Done" ? "green" : "purple";
-  return (
-    <span className={`inline-flex items-center rounded-md bg-${colorType}-50 px-2 py-1 text-xs font-medium text--${colorType}-600 ring-1 ring-inset ring--${colorType}-500/10`}>
-      <svg className={`fill-${colorType}-600 w-1.5 h-1.5`} viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3"></circle></svg>
-      {status}
-    </span>
-  );
-};
-
-const PriorityRenderer = ({ priority }: { priority: Priority }) => {
-  const colorType = priority === "critical" ? "red" : priority === "high" ? "pink" : priority === "medium" ? "yellow" : priority === "low" ? "gray" : "";
-  return (
-    priority === "none" ? null : (
-      <span className={`inline-flex items-center rounded-md bg-${colorType}-50 px-2 py-1 text-xs font-medium text--${colorType}-600 ring-1 ring-inset ring--${colorType}-500/10`}>
-        <svg className={`fill-${colorType}-600 w-1.5 h-1.5`} viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3"></circle></svg>
-        {priority}
-      </span>
-    )
-  );
-};
+import StatusRenderer from "../molecules/statusRenderer";
+import PriorityRenderer from "../molecules/priorityRenderer";
 
 export const IssueRenderer = ({ data }: { data: Issue[] }) => {
   const [height, setHeight] = useState(0);
