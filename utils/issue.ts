@@ -1,7 +1,7 @@
 import { Issue, Label } from "@/contexts/issues";
 
 export function getInitials(name: string) {
-  return name.split(" ").map(i => i.substring(0, 1)).join("").toUpperCase();
+  return name.split(" ").map(i => i.substring(0, 1)).join("").toUpperCase().substring(0, 2);
 }
 
 export function groupBy(records: Issue[], key?: keyof Issue) {

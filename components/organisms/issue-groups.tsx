@@ -20,8 +20,8 @@ const CustomAccordion = ({ groupedData }: { groupedData: Record<any, Issue[]> })
       {
         groups.map((value, index) => (
           <Accordion key={value} className={`flex flex-col w-full overflow-y-hidden ${open === (index + 1) ? "flex-auto accordion--active" : ""}`} open={open === (index + 1)}>
-            <AccordionHeader onClick={() => handleOpen((index + 1))}>{`${value}`.toUpperCase()}</AccordionHeader>
-            <AccordionBody className={`${open === (index + 1) ? "flex flex-auto w-full" : ""}`}>
+            <AccordionHeader className={`border-0 bg-gray-900 px-3 py-2 ${open === (index + 1) ? "" : "mb-2"}`} onClick={() => handleOpen((index + 1))}>{`${value}`.toUpperCase()}</AccordionHeader>
+            <AccordionBody className={`${open === (index + 1) ? "flex flex-auto w-full py-0" : ""}`}>
               {open === (index + 1) && <IssueRenderer data={groupedData[value]} />}
             </AccordionBody>
           </Accordion>
