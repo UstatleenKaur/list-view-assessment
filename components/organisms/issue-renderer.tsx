@@ -17,10 +17,10 @@ export const IssueRenderer = ({ data }: { data: Issue[] }) => {
       {
         height > 0 ? (
           <Virtuoso data={data} style={{ height, width: '100%' }} itemContent={(_, data) => (
-            <div key={data.id} className="flex justify-between gap-x-6 py-5 bg-zinc">
+            <div key={data.id} className="flex justify-between gap-x-6 py-3 px-3 border-b-2 border-b-gray-800">
               <div className="min-w-0 flex-auto flex gap-x-6">
-                <p className="text-sm font-semibold leading-6 text-gray-900">{data.id}</p>
-                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{data.title}</p>
+                <p className="text-sm font-semibold leading-6">{data.id}</p>
+                <p className="mt-1 truncate text-xs leading-5">{data.title}</p>
               </div>
               <StatusRenderer status={data.status} />
               <PriorityRenderer priority={data.priority} />

@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between px-3 ${inter.className}`}
     >
       {!loading && <IssueGroupByTags />}
       {loading ? (
