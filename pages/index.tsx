@@ -5,7 +5,7 @@ import IssuesContext from '@/contexts/issues'
 import IssueGroups from '@/components/organisms/issue-groups'
 import IssuesList from '@/components/organisms/issue-renderer'
 import IssueGroupByTags from '@/components/organisms/issue-group-by-tags'
-import LoadingIssues from '@/components/atoms/loading-issues'
+import LoadingIssues from '@/components/molecules/loading-issues'
 
 const inter = Inter({ subsets: ['latin'] })
 
