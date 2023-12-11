@@ -2,6 +2,7 @@ import { getIssues } from "@/services/issues";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import IssuesContext, { DEFAULT_ISSUES_DATA, IssuesContextWithUtils, IssuesResponse, ParamType } from "./issues";
 
+// This wrapper sets the fetcher and other functions in the state and then in context provider to make it available to the children components. This can also be avoided in setting it to the state by using different types of state managers.
 export default function IssueContextWrapper({ children }: { children: ReactNode }) {
   const [issuesData, setIssuesData] = useState<IssuesContextWithUtils>(DEFAULT_ISSUES_DATA);
   // Since the fetch call goes in and couple of params in the state are still updating, hence we needed some exclusivity to avoid multiple similar calls, which this ref solves the purpose.

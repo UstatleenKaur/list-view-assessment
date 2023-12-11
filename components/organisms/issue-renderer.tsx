@@ -9,6 +9,7 @@ export const IssueRenderer = ({ data }: { data: Issue[] }) => {
   const [height, setHeight] = useState(0);
   const parentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    // This sets the height of the available container to display the virtualized list of issues in that as the Virtuoso package requires height to render the list and manage it on scroll.
     parentRef.current && setHeight(parentRef.current.getBoundingClientRect().height);
   }, []);
 

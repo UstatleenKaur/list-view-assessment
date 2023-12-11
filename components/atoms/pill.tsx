@@ -1,4 +1,5 @@
 const Pill = ({ color, label }: { color: any, label: string }) => {
+  // JIT compiler needs the classes formed beforehand so creating an object with full class names to make the classes and styling available on the browser
   const classes: Record<string, { bg: string; text: string; ring: string; fill: string }> = {
     pink: {
       bg: "bg-pink-200",
@@ -38,8 +39,6 @@ const Pill = ({ color, label }: { color: any, label: string }) => {
     }
   };
   const currentClass = classes[color as any] || classes.pink;
-  // const classes = color === "pink" ? " ring-pink-900 " : "bg-pink-200 ring-pink-900 text-pink-900";
-  // const svgClasses = 
   return (
     <span className={`inline-flex items-center rounded-md ${currentClass.bg} ${currentClass.ring} ${currentClass.text} px-2 py-1 text-xs font-medium ring-1 ring-inset`}>
       <svg className={`${currentClass.fill} mr-1 w-1.5 h-1.5`} viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3"></circle></svg>

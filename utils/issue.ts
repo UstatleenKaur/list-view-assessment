@@ -1,9 +1,11 @@
 import { Issue, Label } from "@/contexts/issues";
 
+// This function extracts the initials of a user from a name
 export function getInitials(name: string) {
   return name.split(" ").map(i => i.substring(0, 1)).join("").toUpperCase().substring(0, 2);
 }
 
+// This groupby function takes the by which it wants the grouping like if its `labels` then it checks which all labels a particular issue has and put that into each label's bucket, or if its `assignee` then it creates two buckets whether the issue is unassigned to a user or not, etc.
 export function groupBy(records: Issue[], key?: keyof Issue) {
   if (!key) return records;
   return records.reduce((result: Record<any, Issue[]>, obj: Issue) => {
@@ -11,12 +13,10 @@ export function groupBy(records: Issue[], key?: keyof Issue) {
 
     if (key === "labels") {
       (keyValue as Label[]).forEach((label) => {
-        // Check if the key exists in the result object
         if (!result[label]) {
           result[label] = [];
         }
 
-        // Push the current object to the corresponding key in the result object
         result[label].push(obj);
       });
     } else if (key === "assignee") {
@@ -29,16 +29,13 @@ export function groupBy(records: Issue[], key?: keyof Issue) {
         result[currentKey] = [];
       }
 
-      // Push the current object to the corresponding key in the result object
       result[currentKey].push(obj);
 
     } else {
-      // Check if the key exists in the result object
       if (!result[keyValue]) {
         result[keyValue] = [];
       }
 
-      // Push the current object to the corresponding key in the result object
       result[keyValue].push(obj);
     }
 
