@@ -13,10 +13,8 @@ const Home = () => {
   const { loading, params } = useContext(IssuesContext);
 
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between px-3 ${inter.className}`}
-    >
-      {!loading && <IssueGroupByTags />}
+    <main className={`flex min-h-screen flex-col items-center px-3 ${inter.className}`}>
+      <IssueGroupByTags />
       {loading ? (
         <LoadingIssues totalItems={5} />
       ) : params.groupBy ? <IssueGroups /> : <IssuesList />}

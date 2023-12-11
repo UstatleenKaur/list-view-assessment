@@ -1,3 +1,4 @@
+// Loader component for a single row of issue
 const LoadingIssueElement = () => (
   <div className="flex py-2 px-3 w-full mx-auto  border-b-2 border-b-gray-800">
     <div className="animate-pulse flex w-full space-x-4">

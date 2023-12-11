@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import {
   Accordion,
   AccordionHeader,
@@ -8,7 +8,8 @@ import IssuesContext, { Issue } from "@/contexts/issues";
 import { groupBy } from "@/utils/issue";
 import { IssueRenderer } from "./issue-renderer";
 
-const CustomAccordion = ({ groupedData }: { groupedData: Record<any, Issue[]> }) => {
+// This creates accordions for the grouped data to render the list of issues according to the group type
+const CustomAccordions = ({ groupedData }: { groupedData: Record<any, Issue[]> }) => {
   const [open, setOpen] = React.useState(1);
 
   const handleOpen = (value: number) => setOpen(value);
@@ -34,7 +35,7 @@ const CustomAccordion = ({ groupedData }: { groupedData: Record<any, Issue[]> })
 const IssueGroups = () => {
   const { data, params } = useContext(IssuesContext);
   const groupedData = groupBy(data?.tickets || [], params.groupBy);
-  return <CustomAccordion groupedData={groupedData as Record<any, Issue[]>} />
+  return <CustomAccordions groupedData={groupedData as Record<any, Issue[]>} />
 };
 
 export default IssueGroups;
